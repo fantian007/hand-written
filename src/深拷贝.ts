@@ -5,7 +5,7 @@ function checkType(o) {
   return Object.prototype.toString.call(o).slice(8, -1);
 }
 
-function clone(target) {
+function cloneDeep(target) {
   let r;
   let targetType = checkType(target);
 
@@ -18,11 +18,12 @@ function clone(target) {
     return target;
   }
 
+  // 注意： for...in 会包含 原型链上的 可枚举 属性
   for (const k in target) {
     const v = target[k];
 
     if (checkType(v) === 'Object' || checkType(v) === 'Array') {
-      r[k] = clone(v);
+      r[k] = cloneDeep(v);
     } else {
       r[k] = v;
     }
