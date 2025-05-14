@@ -1,3 +1,4 @@
+// @ts-nocheck
 function A () {
   this.name = 'A';
 }
@@ -15,3 +16,5 @@ b.__proto__ = A.prototype;
 
 // @ts-ignore
 console.log(b.getName());
+
+export {}

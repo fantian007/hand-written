@@ -26,7 +26,9 @@ async1();
 new Promise(function (resolve) {
   console.log("promise");
   resolve();
-}).then(function () {
+})
+// then 回调时微任务
+.then(function () {
   console.log("then");
 });
 

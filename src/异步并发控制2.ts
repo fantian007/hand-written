@@ -1,31 +1,33 @@
 // @ts-nocheck
 
 function limitConcurrency(requests, concurrency) {
-  let index = 0;
-  let inProgress = 0;
+  let curIndex = 0;
+  let running = 0;
   let completed = 0;
 
   return new Promise((resolve) => {
     function runNext() {
-      if (index >= requests.length && inProgress === 0) {
+      // if (index >= requests.length && inProgress === 0) {
+      if (completed === requests.length) {
         resolve();
         return;
       }
 
-      while (inProgress < concurrency && index < requests.length) {
-        const request = requests[index];
-        index++;
-        inProgress++;
+      while (running < concurrency && curIndex < requests.length) {
+        const request = requests[curIndex];
+
+        curIndex++;
+        running++;
 
         request()
           .then(() => {
             completed++;
-            inProgress--;
+            running--;
             runNext();
           })
           .catch(() => {
             completed++;
-            inProgress--;
+            running--;
             runNext();
           });
       }
