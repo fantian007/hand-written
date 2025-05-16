@@ -110,13 +110,20 @@ const promise = new SimplePromise((resolve, reject) => {
   }, 1000);
 });
 
-promise.then((value) => {
-  console.log(value);
-  return new SimplePromise((resolve) => {
+promise
+.then((value) => {
+  console.log('1', value);
+  return new SimplePromise((resolve, reject) => {
     setTimeout(() => {
       resolve('链式调用成功');
     }, 1000);
   });
-}).then((value) => {
-  console.log(value);
+})
+.then((value) => {
+  console.log('2', value);
+}, e => {
+  console.log('3', e);
+})
+.then(value => {
+  console.log('_4', value);
 });
