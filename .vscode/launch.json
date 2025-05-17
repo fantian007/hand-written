@@ -11,7 +11,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "/home/zys/_npm/lib/node_modules/ts-node/dist/bin.js",
+      "program": "node_modules/ts-node/dist/bin.js",
       "args": [
         "${relativeFile}"
       ],
