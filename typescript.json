@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "lib": ["DOM", "ESNext", "ES2023.Array"],
+    "module": "commonjs",
+    "skipLibCheck": true,
+    "sourceMap": true
+  }
+}
