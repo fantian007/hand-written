@@ -11,6 +11,7 @@ const throttle = <T extends (...args) => any>(fn: T, delay = 0) => {
     }
 
     fn.apply(this, args);
+    prevTime = Date.now();
   }
 }
 

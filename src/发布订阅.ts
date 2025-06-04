@@ -1,6 +1,6 @@
 
 // @ts-nocheck
-class EventEmiter {
+export class EventEmiter {
   events = {};
 
   on(name, fn) {

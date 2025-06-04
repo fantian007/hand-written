@@ -1,3 +1,4 @@
+// 不允许二次赋值
 function myConst(k, v) {
   if (window.hasOwnProperty(k)) {
     throw new Error(`window.${k} is already defined`)
